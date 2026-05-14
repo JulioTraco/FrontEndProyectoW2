@@ -3,22 +3,22 @@ import { useState } from "react";
 const API = "http://localhost:8000";
 
 function App() {
-  // Crear usuario
+
   const [regName, setRegName] = useState("");
   const [regUsername, setRegUsername] = useState("");
   const [regPassword, setRegPassword] = useState("");
   const [regMsg, setRegMsg] = useState(null);
 
-  // Login
+  
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [loginMsg, setLoginMsg] = useState(null);
 
-  // Mostrar info
+  
   const [userInfo, setUserInfo] = useState(null);
   const [meMsg, setMeMsg] = useState(null);
 
-  // ── Crear usuario ──
+
   async function crearUsuario() {
     setRegMsg(null);
     try {
@@ -39,7 +39,7 @@ function App() {
     }
   }
 
-  // ── Login ──
+
   async function login() {
     setLoginMsg(null);
     const formData = new URLSearchParams();
@@ -54,16 +54,16 @@ function App() {
       });
       const data = await res.json();
       if (res.ok) {
-        setLoginMsg({ type: "success", text: `✓ Usuario autenticado.\nToken: ${data.access_token}` });
+        setLoginMsg({ type: "success", text: `Usuario autenticado.\nToken: ${data.access_token}` });
       } else {
         setLoginMsg({ type: "error", text: `✗ ${data.detail || "Credenciales incorrectas."}` });
       }
     } catch {
-      setLoginMsg({ type: "error", text: "✗ No se pudo conectar con el servidor." });
+      setLoginMsg({ type: "error", text: " No se pudo conectar con el servidor." });
     }
   }
 
-  // ── Mostrar info (via cookie) ──
+  // info via cookie 
   async function mostrarInfo() {
     setMeMsg(null);
     setUserInfo(null);
